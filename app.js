@@ -25,5 +25,9 @@ app.use('/users', usersRouter);
 app.use(express.json());
 app.use(require('cors')());
 app.use('/contacts', contactsRouter);
-app.use(cors);
+app.use(cors({
+  origin: '*', // temporairement autorise tout
+  methods: ['GET', 'POST'],
+  credentials: false
+}));
 module.exports = app;
