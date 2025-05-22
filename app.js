@@ -5,12 +5,16 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var contactsRouter = require('./routes/contacts');
 
 var app = express();
 
-const contactsRouter = require('./routes/contacts');
 
 const cors = require('cors');
+app.use(cors({
+  origin: 'https://nice-moss-0b8c0a900.6.azurestaticapps.net'
+}));
+
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -18,14 +22,10 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-
-
-app.use(express.json());
-app.use(require('cors')());
 app.use('/contacts', contactsRouter);
-app.use(cors({
-  origin:'https://nice-moss-0b8c0a900.6.azurestaticapps.net'
-}));
+
+
 module.exports = app;
