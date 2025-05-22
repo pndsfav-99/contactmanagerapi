@@ -10,6 +10,8 @@ var app = express();
 
 const contactsRouter = require('./routes/contacts');
 
+const cors = require('cors');
+
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -23,5 +25,5 @@ app.use('/users', usersRouter);
 app.use(express.json());
 app.use(require('cors')());
 app.use('/contacts', contactsRouter);
-
+app.use(cors);
 module.exports = app;
