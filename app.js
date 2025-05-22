@@ -11,11 +11,14 @@ var app = express();
 
 
 const cors = require('cors');
-app.use(cors({
-  origin: 'https://nice-moss-0b8c0a900.6.azurestaticapps.net'
-  methods: ['GET', 'POST']
-}));
 
+const corsOptions = {
+  origin: 'https://nice-moss-0b8c0a900.6.azurestaticapps.net',
+  methods: ['GET', 'POST'],
+  credentials: false
+};
+
+app.use(cors(corsOptions));
 
 app.use(logger('dev'));
 app.use(express.json());
