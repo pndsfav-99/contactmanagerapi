@@ -26,8 +26,6 @@ app.use(express.json());
 app.use(require('cors')());
 app.use('/contacts', contactsRouter);
 app.use(cors({
-  origin: '*', // temporairement autorise tout
-  methods: ['GET', 'POST'],
-  credentials: false
+  origin:'https://nice-moss-0b8c0a900.6.azurestaticapps.net'
 }));
 module.exports = app;
